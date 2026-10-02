@@ -97,7 +97,7 @@ public static class SetsAndMaps
 
         foreach (char character in word1)
         {
-            if (character == '')
+            if (character == ' ')
             {
                 continue;
             }
@@ -106,6 +106,10 @@ public static class SetsAndMaps
 
             if (letters.ContainsKey(letter))
             {
+                letters[letter]++;
+            }
+            else
+            {
                 letters[letter] = 1;
             }
             
@@ -113,7 +117,7 @@ public static class SetsAndMaps
 
         foreach (char character in word2)
         {
-            if (character == '')
+            if (character == ' ')
             {
                 continue;
             }
