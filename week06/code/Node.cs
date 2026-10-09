@@ -21,25 +21,62 @@ public class Node
             else
                 Left.Insert(value);
         }
-        else
+        else if (value > Data)
         {
             // Insert to the right
             if (Right is null)
                 Right = new Node(value);
-            else
+            else 
                 Right.Insert(value);
         }
     }
 
     public bool Contains(int value)
     {
-        // TODO Start Problem 2
-        return false;
+        // if the value matches this node, we have found it.
+        if (value ==  Data)
+        {
+            return true;
+        }
+
+        // if the value is smaller, check the left side.
+        if (value < Data)
+        {
+            if (Left == null)
+            {
+                return false;
+            }
+            return Left.Contains(value);
+        }
+
+        // if the value is larger, check the right side.
+        if (Right == null)
+        {
+            return false;
+        }
+        return Right.Contains(value);
     }
 
     public int GetHeight()
     {
-        // TODO Start Problem 4
-        return 0; // Replace this line with the correct return statement(s)
+        // Start with zero because a missing child has height zero.
+        int leftHeight = 0;
+        int rightHeight = 0;
+
+        // Find the height of the left branch if  it exists.
+        if (Left != null)
+        {
+            leftHeight = Left.GetHeight();
+        }
+
+        // Find the height o the right bbranch if it exists.
+        if (Right !=  null)
+        {
+            rightHeight = Right.GetHeight();
+        }
+
+        // Return one plus the height  of the taller branch.
+
+        return 1 + Math.Max(leftHeight, rightHeight);
     }
 }
